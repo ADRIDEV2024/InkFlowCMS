@@ -13,7 +13,7 @@ InkFlowCMS es un **sistema de gestión de contenido (CMS)** basado en **Django y
 ✔ **Editor de Páginas Dinámicas** - Crea y edita contenido de manera flexible.
 ✔ **Gestión de Archivos** - Soporte para imágenes, documentos y otros formatos multimedia.
 ✔ **API REST con DRF** - Accede a los datos de forma programática con Django Rest Framework.
-✔ **Seguridad y Rendimiento** - Uso de HTTPS, autenticación con tokens y caché optimizado.
+✔ **Seguridad y Rendimiento** - Uso de HTTPS 2.1, autenticación con tokens JWT y caché optimizado.
 
 ---
 
