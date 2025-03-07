@@ -24,6 +24,11 @@ class PostAdmin(admin.ModelAdmin):
     list_filter = ('is_published', 'categories', 'tags', 'author')
     prepopulated_fields = {'slug': ('title',)}
     actions = [publish_posts, unpublish_posts]
+    readonly_fields = ('updated_by',)  # Evita cambios manuales en admin
+
+    def save_model(self, request, obj, form, change):
+        obj.updated_by = request.user  
+        super().save_model(request, obj, form, change)
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
