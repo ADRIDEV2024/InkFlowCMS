@@ -19,7 +19,12 @@ class PageAdmin(admin.ModelAdmin):
     search_fields = ('title', 'author__username')
     prepopulated_fields = {'slug': ('title',)}
     actions = [publish_pages, unpublish_pages]
-    
+    readonly_fields = ('updated_by',)  # Evita cambios manuales en admin
+
+    def save_model(self, request, obj, form, change):
+        obj.updated_by = request.user  
+        super().save_model(request, obj, form, change)
+        
     def preview_link(self, obj):
         url = f"/pages/{obj.slug}/"
         return format_html(f'<a href="{url}" target="_blank">Ver página</a>')
