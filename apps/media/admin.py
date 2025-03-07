@@ -36,6 +36,11 @@ class MediaFileAdmin(admin.ModelAdmin):
     list_filter = ('is_public', 'uploaded_at')
     search_fields = ('file', 'uploaded_by__username')
     actions = [export_media_to_csv, make_private, make_public]
+    readonly_fields = ('uploaded_by',)  # Evita cambios manuales en admin
+
+    def save_model(self, request, obj, form, change):
+        obj.uploaded_by = request.user  
+        super().save_model(request, obj, form, change)
 
     def thumbnail_preview(self, obj):
         if obj.file.name.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):
