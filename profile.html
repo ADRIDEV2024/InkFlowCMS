@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %} Tu perfil como usuario {% endblock %}
+
+{% block content %}
+<div class="col-md-6 mx-auto">
+    <h2>Perfil de {{ user.username }}</h2>
+    <img src="{{ user.profile_image.url }}" class="img-fluid rounded-circle" width="100">
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Biografía:</strong> {{ user.bio }}</p>
+</div>
+{% endblock %}

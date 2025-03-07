@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Notificaciones{% endblock %}
+
+{% block content %}
+<h2>Notificaciones</h2>
+<ul>
+    {% for notification in notifications %}
+        <li>{{ notification.message }} - {{ notification.created_at }}</li>
+    {% empty %}
+        <p>Parece que ahora no tienes notificaciones nuevas.</p>
+    {% endfor %}
+</ul>
+{% endblock %}
