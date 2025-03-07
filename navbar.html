@@ -1,0 +1,16 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">InkFlow</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'page-detail' slug='about' %}">Acerca de</a></li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'user-profile' %}">Perfil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'user-logout' %}">Cerrar sesión</a></li>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'user-login' %}">Iniciar sesión</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
